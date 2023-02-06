@@ -14,7 +14,7 @@ export default {
       type: String,
       require: true
     },
-    type: {
+    typeName: {
       type: String,
       require: false,
       dafault: "primary",
@@ -22,12 +22,10 @@ export default {
         return ["primary", "secondary"].includes(value);
       }
     }
-  } 
-  
-  ["title", "type"],
+  },
   computed: {
     buttonClass() {
-      return {[this.type]: true}
+      return {[this.typeName]: true}
     }
   }
 }
