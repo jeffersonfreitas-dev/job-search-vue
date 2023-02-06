@@ -1,5 +1,5 @@
 <template>
-  <button :class="{ primary }" @click="doubleHeight" >height {{ height }} area {{ area }}</button>
+  <button :class="buttonClass">{{ title }}</button>
 </template>
 
 <script>
@@ -7,22 +7,27 @@ export default {
   name: "ActionButton",
   methods: {
     handleClick(event) {
+    }
+  },
+  props: {
+    title: {
+      type: String,
+      require: true
     },
-    doubleHeight() {
-      this.height = this.height *2;
+    type: {
+      type: String,
+      require: false,
+      dafault: "primary",
+      validator(value) {
+        return ["primary", "secondary"].includes(value);
+      }
     }
-  },
-  props: ["title"],
-  data() {
-    return {
-      primary: true,
-      height: 1,
-      width: 2
-    }
-  },
+  } 
+  
+  ["title", "type"],
   computed: {
-    area() {
-      return this.height * this.width;
+    buttonClass() {
+      return {[this.type]: true}
     }
   }
 }
@@ -30,12 +35,14 @@ export default {
 
 <style scoped>
 button {
-  @apply rounded px-5 py-3 font-medium hover:shadow-blue;
+  @apply rounded px-5 py-3 font-medium;
 }
 
 .primary {
-  @apply border-0 bg-brand-blue-1 text-white;
+  @apply border-0 bg-brand-blue-1 text-white hover:shadow-blue;
 }
 
-.secondary {}
+.secondary {
+  @apply bg-transparent text-brand-blue-1  hover:bg-brand-blue-2 hover:text-white;
+}
 </style>
