@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="mb-16">
     <h1 class="mb-14 text-8xl font-bold tracking-tighter"><span :class="actionClasses">{{ action }} </span> 
       <br />
       for everyone</h1>
@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import nextElementInList from '@/utils/nextElementInList';
+
 export default {
   name: "TheHeadline",
   data () {
@@ -32,11 +34,7 @@ export default {
   methods: {
     changeTitle(){
       this.interval = setInterval(() => {
-        const actions = ["Build", "Create", "Desing", "Code"];
-        const currentActionIndex = actions.indexOf(this.action);
-        const nextActionIndex = (currentActionIndex + 1 ) % 4;
-        const ne3xAction = actions[nextActionIndex];
-        this.action = ne3xAction;
+        this.action = nextElementInList(["Build", "Create", "Desing", "Code"], this.action);
       }, 2000)
     }
   }
