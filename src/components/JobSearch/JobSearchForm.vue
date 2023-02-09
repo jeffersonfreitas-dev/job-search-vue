@@ -4,14 +4,12 @@
       <div class="flex h-full flex-1 flex-nowrap text-base font-light">
         <div class="relative flex h-full flex-1 items-center pr-3">
           <label class="absolute left-0 -top-10">Role</label>
-          <input type="text" placeholder="Software enginner" 
-            class="w-full text-lg font-normal focus:outline-none" v-model="role"/>
+          <text-input placeholder="Software enginner" v-model="role"/>
         </div>
         <span class="flex h-full items-center border-l border-r border-brand-gray-3 bg-brand-gray-2 px-3">in</span>
         <div class="relative flex h-full flex-1 items-center pl-3">
           <label class="absolute left-0 -top-10">Where?</label>
-          <input type="text" placeholder="Iguatu-CE" 
-            class="w-full text-lg font-normal focus:outline-none" v-model="location"/>
+          <text-input placeholder="Iguatu-CE" v-model="location"/>
         </div>
       </div>
       <action-button title="Search" typeName="secondary" class="rounded-r-3xl"/>
@@ -20,10 +18,11 @@
 
 <script>
 import ActionButton from "@/components/Shared/ActionButton.vue";
+import TextInput from "@/components/Shared/TextInput.vue";
   export default {
     name: "JobSeachForm",
     components: {
-      ActionButton
+      ActionButton, TextInput
     },
     data () {
       return {
