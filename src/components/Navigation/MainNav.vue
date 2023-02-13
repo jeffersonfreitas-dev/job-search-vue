@@ -6,8 +6,8 @@
 
         <nav class="ml-12 h-full">
           <ul class="flex h-full list-none">
-            <li class="ml-9 h-full first:ml-0" v-for="menuItem in menuItems" :key="menuItem">
-              <a href="/" class="flex h-full items-center py-2.5">{{ menuItem }}</a>
+            <li class="ml-9 h-full first:ml-0" v-for="menuItem in menuItems" :key="menuItem.text">
+              <routerLink :to="menuItem.url" class="flex h-full items-center py-2.5">{{ menuItem.text }}</routerLink>
             </li>
           </ul>
         </nav>
@@ -34,12 +34,12 @@ export default {
   data() {
     return {
       menuItems: [
-        "Teams",
-        "Location",
-        "Life at Jeff Corp",
-        "How we hire",
-        "Students",
-        "Jobs",
+        {text: "Teams", url: "/"},
+        {text: "Location", url: "/"},
+        {text: "Life at Jeff Corp", url: "/"},
+        {text: "How we hire", url: "/"},
+        {text: "Students", url: "/"},
+        {text: "Jobs", url: "/jobs/results"}
       ],
       isLoggedIn: false
     }
