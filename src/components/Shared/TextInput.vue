@@ -1,7 +1,7 @@
 <template>
   <input 
     type="text"
-    :value="value"
+    :value="modelValue"
     class="w-full text-lg font-normal focus:outline-none"
     @input="handleInput"
   />
